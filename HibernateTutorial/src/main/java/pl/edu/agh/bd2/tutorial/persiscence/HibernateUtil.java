@@ -26,7 +26,4 @@ public class HibernateUtil {
 		getSessionFactory().close();
 	}
 	
-	public static void main(String[] args) {
-		
-	}
 }
