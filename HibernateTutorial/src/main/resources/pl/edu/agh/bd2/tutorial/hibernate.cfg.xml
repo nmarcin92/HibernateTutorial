@@ -19,7 +19,7 @@
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
         <!-- Echo all executed SQL to stdout -->
-        <property name="show_sql">true</property>
+        <property name="show_sql">false</property>
 
 		<!--  Drop and re-create the database schema at startup -->
 		<property name="hbm2ddl.auto">create</property> 
@@ -27,7 +27,8 @@
 
         <!-- Mappings -->
         <mapping class="main.java.pl.edu.agh.bd2.tutorial.dto.User"/>
-        
+        <mapping class="main.java.pl.edu.agh.bd2.tutorial.dto.ForumThread"/>
+        <mapping class="main.java.pl.edu.agh.bd2.tutorial.dto.Post"/>
         
     </session-factory>
 

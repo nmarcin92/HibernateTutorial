@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +24,8 @@ public class Post {
 	@Column(name="POST_ID")
 	private long id;
 	
+	@ManyToOne
+	@JoinColumn(name="THREAD_ID")
 	private ForumThread thread;
 
 	@Lob
