@@ -2,25 +2,46 @@ package main.java.pl.edu.agh.bd2.tutorial.dto;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="USERS")
 public class User {
 
 	public enum Sex {
         MALE, FEMALE
     }
 	
-	private long id;
+	@Id
 	private String login;
+	
 	private String city;
-	private Date creationDate;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="JOIN_DATE")
+	private Date joinDate;
+	
 	private int age;
+	
 	private Sex gender;
 	
-	public long getId() {
-		return id;
+	public User(){}
+	
+	public User(String login, String city, Date joinDate, int age, Sex gender) {
+		this.login = login;
+		this.city = city;
+		this.joinDate = joinDate;
+		this.age = age;
+		this.gender = gender;
 	}
-	public void setId(long id) {
-		this.id = id;
-	}
+	
 	public String getLogin() {
 		return login;
 	}
@@ -33,11 +54,11 @@ public class User {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public Date getCreationDate() {
-		return creationDate;
+	public Date getJoinDateDate() {
+		return joinDate;
 	}
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
 	}
 	public int getAge() {
 		return age;

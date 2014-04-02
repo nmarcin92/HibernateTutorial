@@ -2,13 +2,45 @@ package main.java.pl.edu.agh.bd2.tutorial.dto;
 
 import java.util.Date;
 
-public class ForumThread {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
+@Entity
+@Table(name="FORUM_THREADS")
+public class ForumThread {
+	
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="THREAD_ID")
 	private long id;
+	
 	private String title;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="CREATION_DATE")
 	private Date creationDate;
+	
 	private User user;
 	
+	@Transient
+	private int numberOfViews;
+	
+	public ForumThread() {}
+	
+	public ForumThread(String title, Date creationDate, User user) {
+		this.title = title;
+		this.creationDate = creationDate;
+		this.user = user;
+		this.numberOfViews = 0;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -32,5 +64,13 @@ public class ForumThread {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public int getNumberOfViews() {
+		return numberOfViews;
+	}
+
+	public void setNumberOfViews(int numberOfViews) {
+		this.numberOfViews = numberOfViews;
 	}
 }

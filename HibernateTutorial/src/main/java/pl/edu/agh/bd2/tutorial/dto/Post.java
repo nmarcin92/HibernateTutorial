@@ -2,13 +2,47 @@ package main.java.pl.edu.agh.bd2.tutorial.dto;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="POSTS")
 public class Post {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="POST_ID")
 	private long id;
+	
 	private ForumThread thread;
+
+	@Lob
 	private String content;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="WRITING_DATE")
 	private Date writingDate;
-	private String location;
+	
+	@Embedded
+	private Location location;
+	
+	public Post() {}
+	
+	public Post(ForumThread thread, String content, Date writingDate,
+			Location location) {
+		this.thread = thread;
+		this.content = content;
+		this.writingDate = writingDate;
+		this.location = location;
+	}
 	
 	public long getId() {
 		return id;
@@ -34,10 +68,10 @@ public class Post {
 	public void setWritingDate(Date writingDate) {
 		this.writingDate = writingDate;
 	}
-	public String getLocation() {
+	public Location getLocation() {
 		return location;
 	}
-	public void setLocation(String location) {
+	public void setLocation(Location location) {
 		this.location = location;
 	}
 	

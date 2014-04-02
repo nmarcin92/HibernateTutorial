@@ -21,7 +21,13 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <!-- Mapping classes -->
+		<!--  Drop and re-create the database schema at startup -->
+		<property name="hbm2ddl.auto">create</property> 
+		<!-- change to 'update' -->
+
+        <!-- Mappings -->
+        <mapping class="main.java.pl.edu.agh.bd2.tutorial.dto.User"/>
+        
         
     </session-factory>
 
