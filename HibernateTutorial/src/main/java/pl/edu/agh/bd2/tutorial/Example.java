@@ -17,14 +17,15 @@ import org.hibernate.criterion.Restrictions;
 
 public class Example {
 	
+	public static Scanner scanner = new Scanner(System.in);
+	
 	public static Date parseDate(int year, int month, int day) {
 		return new GregorianCalendar(year,month,day).getTime();
 	}
 	
 	public static void waitForInput(String msg) {
 		System.out.println("[info] " + msg);
-		Scanner sc = new Scanner(System.in);
-		while(!sc.nextLine().equals(""));
+		while(!scanner.nextLine().equals(""));
 	}
 
 	public static void createExample() {
